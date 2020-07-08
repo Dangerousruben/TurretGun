@@ -13,6 +13,8 @@ void AStandardGun::StartShooting_Implementation(APawn * Shooter)
 		ABulletBase* tempptr = GetWorld()->SpawnActor<ABulletBase>(BulletType, FTransform(GetActorRotation(), GunMesh->GetSocketLocation(MuzzleSocket), FVector(1.0f, 1.0f, 1.0f)));
 		tempptr->BulletMesh->IgnoreActorWhenMoving(this, true);
 		if (Shooter)
-			tempptr->Instigator = Shooter;
+		{
+			tempptr->SetInstigator(Shooter);
+		}
 	}
 }

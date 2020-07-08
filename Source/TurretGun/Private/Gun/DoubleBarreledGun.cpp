@@ -14,12 +14,16 @@ void ADoubleBarreledGun::StartShooting_Implementation(APawn * Shooter)
 		ABulletBase* tempptr = GetWorld()->SpawnActor<ABulletBase>(BulletType, FTransform(GetActorRotation(), GunMesh->GetSocketLocation(LeftMuzzleSocket), FVector(1.0f, 1.0f, 1.0f)));
 		tempptr->BulletMesh->IgnoreActorWhenMoving(this, true);
 		if (Shooter)
-			tempptr->Instigator = Shooter;
+		{
+			tempptr->SetInstigator(Shooter);
+		}
 
 		//Right Bullet
 		tempptr = GetWorld()->SpawnActor<ABulletBase>(BulletType, FTransform(GetActorRotation(), GunMesh->GetSocketLocation(RightMuzzleSocket), FVector(1.0f, 1.0f, 1.0f)));
 		tempptr->BulletMesh->IgnoreActorWhenMoving(this, true);
 		if (Shooter)
-			tempptr->Instigator = Shooter;
+		{
+			tempptr->SetInstigator(Shooter);
+		}
 	}
 }
