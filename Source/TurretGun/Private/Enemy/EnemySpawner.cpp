@@ -40,6 +40,7 @@ void AEnemySpawner::SpawnEnemy()
 
 	AEnemy* tempptr = GetWorld()->SpawnActor<AEnemy>(standardEnemy, FTransform(GetActorRotation(), 
 		FVector(GetActorLocation().X + forwardExtent, GetActorLocation().Y + rightExtent, GetActorLocation().Z), FVector(1.0f, 1.0f, 1.0f)));
+	tempptr->SpawnDefaultController();
 }
 
 // Called every frame
